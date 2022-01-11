@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 
+import {Link} from 'react-router-dom';
+
 import Card from '../../components/Card';
 
 function Home() {
@@ -22,11 +24,14 @@ function Home() {
   return (
     <div>
       <input placeholder='Pesquisa'   ref={inputRef}/>
+
+      <Link to="/about">Ir para página sobre</Link>
       <h1>Total de cards: {cards.length}</h1>
       <div className='container'>
         {
           cards.map((card) =>
             <Card
+              key={card.id}
               name={card.name}
               image={card.card_images[0].image_url_small}
               type={card.type}
