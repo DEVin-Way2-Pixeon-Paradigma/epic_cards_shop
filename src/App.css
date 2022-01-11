@@ -5,7 +5,6 @@
   display: flex;
   flex-wrap: wrap;
 
- 
   align-items: center;
   justify-content: center;
 }
@@ -29,4 +28,26 @@
 
 .item-card-name {
   text-align: center;
+}
+
+.container-app {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* HOME CSS */
+
+.category-item {
+  height: 34px;
+  padding: 10px 5px;
+  width: 100%;
+  background: #304E74;
+  margin: 10px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 16px;
+  color: #FFF;
 }
