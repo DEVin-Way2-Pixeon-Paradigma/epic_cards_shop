@@ -51,3 +51,34 @@
   font-size: 16px;
   color: #FFF;
 }
+
+
+/* CSS MENU */
+
+.menu {
+  height: 44px;
+  background: #EC6D08;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.menu-title {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.menu-list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.menu-list-item {
+ color: #FFF;
+ font-weight: bold;
+ font-size: 16px;
+ text-decoration: none; 
+}
