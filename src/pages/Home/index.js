@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TYPES = [
   "Aqua",
@@ -19,9 +20,10 @@ const TYPES = [
 function Home() {
   return (
     <div className='container-app'>
-      
-        {TYPES.map((type) => <div className='category-item'>{type}</div>)}
-      
+      {TYPES.map((type) =>
+        <div className='category-item'>
+          <Link to={`/cards/${type}`}>{type}</Link>
+        </div>)}
     </div>
 
   );

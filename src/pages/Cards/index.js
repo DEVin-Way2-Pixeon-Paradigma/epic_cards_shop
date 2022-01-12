@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 import Card from '../../components/Card';
 
 function Cards() {
+
+  const params = useParams();
+  
 
   const inputRef = useRef(null)
   const [cards, setCards] = useState([])
@@ -13,13 +16,17 @@ function Cards() {
   useEffect(() => {
 
     async function handleGetCard() {
-      const response = await fetch('http://localhost:3333/cards?_limit=18')
+      const response = await fetch(
+        `http://localhost:3333/cards?race=${params.category}`
+        )
       const data = await response.json()
       setCards(data)
     }
 
+    console.log('entrei')
+
     handleGetCard();
-  }, [])
+  }, [params.category])
 
   return (
     <div>
