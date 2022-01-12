@@ -21,9 +21,11 @@ function Home() {
   return (
     <div className='container-app'>
       {TYPES.map((type) =>
-        <div className='category-item'>
+        <div className='category-item' key={type}>
           <Link to={`/cards/${type}`}>{type}</Link>
-        </div>)}
+        </div>
+        )
+        }
     </div>
 
   );
