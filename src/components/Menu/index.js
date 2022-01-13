@@ -4,11 +4,11 @@ import { CartContext } from '../../contexts/Cart';
 
 function Menu() {
 
-  const data = useContext(CartContext)
-  console.log(data) 
+  const {cart} = useContext(CartContext)
+ 
   return (
     <nav className='menu'>
-      {data.message}
+      {cart.length} no carrinho
       <h1 className='menu-title'>Epic Cards Shop</h1>
       <ul className='menu-list'>
         <li><Link to="/" className='menu-list-item'>Home</Link></li>
