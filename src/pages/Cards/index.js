@@ -8,8 +8,8 @@ import { CartContext } from '../../contexts/Cart';
 
 function Cards() {
 
-  const {addItem} = useContext(CartContext)
-  
+  const { addItem } = useContext(CartContext)
+
   const params = useParams();
 
   const inputRef = useRef(null)
@@ -34,7 +34,7 @@ function Cards() {
   return (
     <div>
 
-  
+
       <Link to="/about">Ir para página sobre</Link>
       <h1>Total de cards: {cards.length}</h1>
       <div className='container'>
@@ -50,7 +50,9 @@ function Cards() {
               <button
                 onClick={() => {
                   addItem(card)
-                }}>Adicionar</button>
+                }}>
+                Adicionar
+              </button>
             </div>
           )
         }

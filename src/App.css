@@ -82,3 +82,28 @@
  font-size: 16px;
  text-decoration: none; 
 }
+
+/* CSS TABLE */
+
+.table-cart {
+  width: 100%;
+  background: #FFF;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.table-cart thead, th {
+  color: #999;
+  text-align: left;
+  padding: 12px;
+}
+
+.table-cart tbody, th {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-image {
+  height: 100px;
+}
