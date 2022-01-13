@@ -33,8 +33,6 @@ function Cards() {
 
   return (
     <div>
-
-
       <Link to="/about">Ir para página sobre</Link>
       <h1>Total de cards: {cards.length}</h1>
       <div className='container'>

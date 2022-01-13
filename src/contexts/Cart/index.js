@@ -9,7 +9,7 @@
   ...
 */
 
-import { createContext, useState } from "react"; // 1 
+import { createContext, useEffect, useState } from "react"; // 1 
 
 export const CartContext = createContext([]); // 2
 
@@ -19,7 +19,17 @@ export function CartProvider({ children }) {
 
   function handleAddCart(item) {
     setCart([...cart, item])
+    localStorage.setItem("cart", JSON.stringify([...cart, item]));
   }
+
+  useEffect(() => {
+    function handleGetItensLocalStorage() {
+      const storedArray = JSON.parse(localStorage.getItem("cart"));
+      // se storage estiver vazio , coloca um array vazio
+      setCart(storedArray || [])
+    }
+    handleGetItensLocalStorage();
+  }, [])
 
   return (
     <CartContext.Provider

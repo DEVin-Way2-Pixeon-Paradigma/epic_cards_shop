@@ -7,7 +7,6 @@ function Cart() {
 
   return (
     <div>
-
       <table className='table-cart'>
         <thead>
           <th>#</th>
