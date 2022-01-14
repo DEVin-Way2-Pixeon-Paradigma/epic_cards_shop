@@ -43,8 +43,6 @@ function Cart() {
           )}
         </tbody>
       </table>
-
-
     </div>
   );
 }

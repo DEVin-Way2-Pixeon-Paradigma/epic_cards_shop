@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Card from '../../components/Card';
 
@@ -12,40 +12,39 @@ function Cards() {
 
   const params = useParams();
 
-  const inputRef = useRef(null)
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [cards, setCards] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const handleGetMoreItens = async () => {
-
-    const response = await fetch(
-      `http://localhost:3333/cards?race=${params.category}&_limit=10&_page=${currentPage + 1}
-      `
-    )
-    
-    const data = await response.json()
-    setCards([...cards, ...data])
-    setCurrentPage(currentPage + 1)
-  }
-
 
   //Query params 
   useEffect(() => {
     async function handleGetCard() {
       const response = await fetch(
-        `http://localhost:3333/cards?race=${params.category}&_limit=10&_page=${currentPage}
-        `
+        `http://localhost:3333/cards?race=${params.category}&_page=${currentPage}&_limit=${15}`
       )
       const data = await response.json()
-      setCards(data)
+      setCards([...cards, ...data])
     }
-    handleGetCard();
-  }, [params.category])
 
+
+    handleGetCard();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.category, currentPage])
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        setCurrentPage((currentValue) => currentValue + 1);
+      }
+    })
+    intersectionObserver.observe(document.querySelector('#sentinela'));
+    return () => intersectionObserver.disconnect();
+  }, []);
+  
   return (
     <div>
-      <Link to="/about">Ir para página sobre</Link>
       <h1>Total de cards: {cards.length}</h1>
+      {currentPage}
       <div className='container'>
         {
           cards.map((card) =>
@@ -65,7 +64,7 @@ function Cards() {
             </div>
           )
         }
-        <button onClick={handleGetMoreItens}>trazer mais</button>
+        <p id="sentinela"></p>
       </div>
     </div>
   );
