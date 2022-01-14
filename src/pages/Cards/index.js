@@ -14,20 +14,31 @@ function Cards() {
 
   const inputRef = useRef(null)
   const [cards, setCards] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const handleGetMoreItens = async () => {
+
+    const response = await fetch(
+      `http://localhost:3333/cards?race=${params.category}&_limit=10&_page=${currentPage + 1}
+      `
+    )
+    
+    const data = await response.json()
+    setCards([...cards, ...data])
+    setCurrentPage(currentPage + 1)
+  }
+
 
   //Query params 
   useEffect(() => {
-
     async function handleGetCard() {
       const response = await fetch(
-        `http://localhost:3333/cards?race=${params.category}`
+        `http://localhost:3333/cards?race=${params.category}&_limit=10&_page=${currentPage}
+        `
       )
       const data = await response.json()
       setCards(data)
     }
-
-    console.log('entrei')
-
     handleGetCard();
   }, [params.category])
 
@@ -54,6 +65,7 @@ function Cards() {
             </div>
           )
         }
+        <button onClick={handleGetMoreItens}>trazer mais</button>
       </div>
     </div>
   );
