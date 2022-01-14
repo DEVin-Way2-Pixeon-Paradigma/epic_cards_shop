@@ -10,6 +10,7 @@
 */
 
 import { createContext, useEffect, useState } from "react"; // 1 
+import { v4 as uuidv4 } from 'uuid';
 
 export const CartContext = createContext([]); // 2
 
@@ -17,9 +18,41 @@ export function CartProvider({ children }) {
 
   const [cart, setCart] = useState([])
 
-  function handleAddCart(item) {
-    setCart([...cart, item])
-    localStorage.setItem("cart", JSON.stringify([...cart, item]));
+  console.log(cart)
+
+  //map
+  // filter
+
+  function handleAddCart(card) {
+
+    /* SOLUCAO 1 - POUCA EFICIENTE
+    if(cart.find(item => item.id === card.id)) {
+      alert('Item ja adicionado ao carrinho')
+      return
+    }
+    */
+
+    const newCard = {
+      ...card,
+      idCard: uuidv4()
+    }
+
+    setCart([...cart, newCard])
+    localStorage.setItem("cart", JSON.stringify([...cart, card]));
+    alert('Adicionado no carrinho')
+  }
+
+  function handleRemoveItemInCart(idCard) {
+    const cartFiltered = cart.filter(item => {
+      if (item.idCard === idCard) {
+        return false // Remove item do carrinho
+      } else {
+        return true // permanece item no carrinho
+      }
+    })
+    setCart(cartFiltered)
+    localStorage.setItem("cart", JSON.stringify(cartFiltered));
+    alert('Removido do item')
   }
 
   useEffect(() => {
@@ -35,7 +68,8 @@ export function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cart: cart,
-        addItem: handleAddCart
+        addItem: handleAddCart,
+        removeItem: handleRemoveItemInCart
       }}>
       {children}
     </CartContext.Provider>
