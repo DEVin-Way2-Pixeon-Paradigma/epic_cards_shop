@@ -6,6 +6,8 @@ import Card from '../../components/Card';
 
 import { CartContext } from '../../contexts/Cart';
 
+import { FaHeart, FaCartPlus } from 'react-icons/fa'
+
 function Cards() {
 
   const { addItem } = useContext(CartContext)
@@ -28,7 +30,7 @@ function Cards() {
 
 
     handleGetCard();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.category, currentPage])
 
   useEffect(() => {
@@ -40,7 +42,7 @@ function Cards() {
     intersectionObserver.observe(document.querySelector('#sentinela'));
     return () => intersectionObserver.disconnect();
   }, []);
-  
+
   return (
     <div>
       <h1>Total de cards: {cards.length}</h1>
@@ -48,20 +50,10 @@ function Cards() {
       <div className='container'>
         {
           cards.map((card) =>
-            <div>
               <Card
                 key={card.id}
-                name={card.name}
-                image={card.card_images[0].image_url_small}
-                type={card.type}
+                data={card}
               />
-              <button
-                onClick={() => {
-                  addItem(card)
-                }}>
-                Adicionar
-              </button>
-            </div>
           )
         }
         <p id="sentinela"></p>

@@ -13,7 +13,7 @@ function Menu() {
       <ul className='menu-list'>
         <li><Link to="/" className='menu-list-item'>Home</Link></li>
         <li><Link to="/cart" className='menu-list-item' >Cart</Link></li>
-        <li><Link to="/about" className='menu-list-item'>Sobre</Link></li>
+        <li><Link to="/lista_desejos" className='menu-list-item'>Lista de desejos</Link></li>
       </ul>
     </nav>
   );
