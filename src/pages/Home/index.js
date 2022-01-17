@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Container, CategoryItem } from './styles';
+import Container from '../../components/Container';
+import { CategoryItem } from './styles';
 
 const TYPES = [
   "Aqua",
