@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import Input from '../../components/Input';
+import Textarea from '../../components/Textarea';
+
 import  Container from '../../components/Container';
 
 import {Form} from './styles';
@@ -33,6 +35,28 @@ function Checkout() {
     <Container>
 
       <Form onSubmit={handleSubmit}>
+
+      <Textarea
+          label="Comentário 2"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value)
+          }}
+          placeholder="Digite seu email"
+          errorMessage={errors.email}
+         
+        />
+
+      <Textarea
+          label="Comentário"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value)
+          }}
+          placeholder="Digite seu email"
+          errorMessage={errors.email}
+         
+        />
 
         <Input
           label="Email"
