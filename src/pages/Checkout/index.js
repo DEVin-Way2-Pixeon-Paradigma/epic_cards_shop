@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Input from '../../components/Input';
-
 import  Container from '../../components/Container';
 
 import {Form} from './styles';
@@ -10,30 +9,30 @@ function Checkout() {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState({});
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    let currentErrors = [];
+    let currentErrors = {};
 
     if (!email) {
-      currentErrors = [...currentErrors, 'EMail é obrigatório']
+      currentErrors.email = 'Email é obrigatório';
     } 
     
     if (!password) {
-      currentErrors = [...currentErrors, 'Password é obrigatório']
+      currentErrors.password = 'Senha é obrigatória';
     } 
+    
+    // Yup
 
-    setErrors(currentErrors)
+    setErrors(currentErrors);
   }
 
   return (
     <Container>
 
       <Form onSubmit={handleSubmit}>
-
-        {errors.map(item => <p>{item}</p>)}
 
         <Input
           label="Email"
@@ -42,9 +41,9 @@ function Checkout() {
             setEmail(event.target.value)
           }}
           placeholder="Digite seu email"
+          errorMessage={errors.email}
         />
         
-        <br />
         <Input
           label="Senha"
           value={password}
@@ -52,6 +51,7 @@ function Checkout() {
             setPassword(event.target.value)
           }}
           placeholder="Digite sua senha"
+          errorMessage={errors.password}
         />
 
         <button type="submit">Salvar</button>

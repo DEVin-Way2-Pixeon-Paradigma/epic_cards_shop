@@ -13,13 +13,20 @@ export const DescriptionInput = styled.label`
 `;
 
 export const InputText = styled.input`
+width: 100%;
   height: 24px;
   border-radius: 2px;
   outline: none;
-  border: 1px solid #ced4da;
+  border: 1px solid ${(props) => props.errorMessage ? '#dc3545' : '#ced4da'};
   padding: 5px 10px;
 
   &:focus {
     border-color: #EC6D08;
   }
+`;
+
+export const ErrorMessage = styled.div`
+  color: #dc3545;
+  font-size: 11px;
+  margin-top: 2px;
 `;
