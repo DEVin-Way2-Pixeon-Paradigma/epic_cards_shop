@@ -1,16 +1,15 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { ContainerInput, DescriptionInput, InputText } from './styles';
 
 function Input({ label, ...otherProps }) {
   return (
-    <div>
-     <label>{label}</label>
-      <input
+    <ContainerInput>
+     <DescriptionInput>{label}</DescriptionInput>
+      <InputText
         {...otherProps}
       />
-       
-    </div>
+    </ContainerInput>
   );
 }
 

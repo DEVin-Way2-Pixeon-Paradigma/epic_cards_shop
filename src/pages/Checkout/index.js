@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import Input from '../../components/Input';
 
-// import { Container } from './styles';
+import  Container from '../../components/Container';
+
+import {Form} from './styles';
 
 function Checkout() {
   
@@ -27,9 +29,9 @@ function Checkout() {
   }
 
   return (
-    <>
+    <Container>
 
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
 
         {errors.map(item => <p>{item}</p>)}
 
@@ -41,6 +43,7 @@ function Checkout() {
           }}
           placeholder="Digite seu email"
         />
+        
         <br />
         <Input
           label="Senha"
@@ -52,10 +55,10 @@ function Checkout() {
         />
 
         <button type="submit">Salvar</button>
-      </form>
+      </Form>
 
 
-    </>
+    </Container>
   );
 }
 
