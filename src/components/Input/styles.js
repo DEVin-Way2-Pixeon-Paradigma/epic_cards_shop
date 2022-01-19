@@ -13,12 +13,12 @@ export const DescriptionInput = styled.label`
 `;
 
 export const InputText = styled.input`
-width: 100%;
+  width: 100%;
   height: 24px;
   border-radius: 2px;
   outline: none;
   border: 1px solid ${(props) => props.errorMessage ? '#dc3545' : '#ced4da'};
-  padding: 5px 10px;
+  padding-left: 5px;
 
   &:focus {
     border-color: #EC6D08;

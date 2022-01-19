@@ -13,10 +13,8 @@ function Input({ label, errorMessage, ...otherProps }) {
      <DescriptionInput>{label}</DescriptionInput>
       <InputText
         {...otherProps}
-        errorMessage={errorMessage}
       />
-      <ErrorMessage>{errorMessage}</ErrorMessage>
-      
+      <ErrorMessage>{errorMessage}</ErrorMessage> 
     </ContainerInput>
   );
 }

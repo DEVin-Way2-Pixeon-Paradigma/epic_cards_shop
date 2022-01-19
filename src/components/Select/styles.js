@@ -13,5 +13,19 @@ export const DescriptionSelect = styled.label`
 `;
 
 export const List = styled.select`
-  
+  background: #FFF;
+  width: 100%;
+  height: 24px;
+  outline: 0;
+  border: 1px solid #ced4da;
+  padding-left: 5px;
+  border-radius: 2px;
+
+  option {
+    background: #ced4da;
+  }
+
+  &:focus {
+    border-color: #EC6D08;
+  }
 `;
