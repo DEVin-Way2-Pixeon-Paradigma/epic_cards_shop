@@ -12,6 +12,7 @@ import Menu from './components/Menu';
 import { CartProvider } from './contexts/Cart'
 import { FavoritesProvider } from './contexts/Favorites';
 
+import "react-datepicker/dist/react-datepicker.css";
 
 // http://locahost:3000/cards/dinosauro
 // http://locahost:3000/cards/fada

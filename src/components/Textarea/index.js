@@ -26,4 +26,4 @@ function Textarea({
   );
 }
 
-export default Textarea;
+export default React.memo(Textarea);

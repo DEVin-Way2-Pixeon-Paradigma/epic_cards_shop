@@ -3,12 +3,16 @@ import React, { useState } from 'react';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
-import  Container from '../../components/Container';
+import InputDate from '../../components/InputDate';
 
-import {Form} from './styles';
+import Container from '../../components/Container';
+
+import { Form } from './styles';
 
 function Checkout() {
-  
+
+  const [startDate, setStartDate] = useState(new Date());
+
   const [color, setColor] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,12 +25,12 @@ function Checkout() {
 
     if (!email) {
       currentErrors.email = 'Email é obrigatório';
-    } 
-    
+    }
+
     if (!password) {
       currentErrors.password = 'Senha é obrigatória';
-    } 
-    
+    }
+
     // Yup
 
     setErrors(currentErrors);
@@ -37,8 +41,13 @@ function Checkout() {
 
       <Form onSubmit={handleSubmit}>
 
+        <InputDate
+          label="Qual o seu aniversário ?"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
 
-      <Textarea
+        <Textarea
           label="Comentário"
           value={email}
           onChange={(event) => {
@@ -46,10 +55,10 @@ function Checkout() {
           }}
           placeholder="Digite seu email"
           errorMessage={errors.email}
-         
         />
-        
+
         <Input
+          type="date"
           label="Senha"
           value={password}
           onChange={(event) => {
@@ -59,7 +68,7 @@ function Checkout() {
           errorMessage={errors.password}
         />
 
-         <Select
+        <Select
           label="Qual sua cor favorita ?"
           value={color}
           onChange={(e) => setColor(e.target.value)}
@@ -80,10 +89,7 @@ function Checkout() {
               }
             ]
           }
-         />
-
-        {color}
-        
+        />
 
         <button type="submit">Salvar</button>
       </Form>

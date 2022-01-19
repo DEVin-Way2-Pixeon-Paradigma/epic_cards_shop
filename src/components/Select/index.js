@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ContainerSelect,
   DescriptionSelect,
@@ -5,8 +6,10 @@ import {
 } from './styles';
 
 function Select({ label, options, description, ...otherProps }) {
+  
   return (
     <ContainerSelect>
+     
       <DescriptionSelect>{label}</DescriptionSelect>
       <List {...otherProps} selected="">
         <option disabled value="">{description}</option>
@@ -21,4 +24,4 @@ function Select({ label, options, description, ...otherProps }) {
   );
 }
 
-export default Select;
+export default React.memo(Select);

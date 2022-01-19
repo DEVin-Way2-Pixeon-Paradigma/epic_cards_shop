@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDatePicker from 'react-datepicker';
 
 import { 
    ContainerInput, 
@@ -7,16 +8,17 @@ import {
    ErrorMessage
    } from './styles';
 
-function Input({ label, errorMessage, ...otherProps }) {
+function InputDate({ label, errorMessage, ...otherProps }) {
   return (
     <ContainerInput>
      <DescriptionInput>{label}</DescriptionInput>
-      <InputText
-        {...otherProps}
-      />
+     <ReactDatePicker
+       {...otherProps}
+       customInput={<InputText errorMessage={errorMessage}/>}
+    />
       <ErrorMessage>{errorMessage}</ErrorMessage> 
     </ContainerInput>
   );
 }
 
-export default  React.memo(Input);
+export default React.memo(InputDate);
