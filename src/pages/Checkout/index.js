@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
-
+import Select from '../../components/Select';
 import  Container from '../../components/Container';
 
 import {Form} from './styles';
 
 function Checkout() {
   
+  const [color, setColor] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -36,16 +37,6 @@ function Checkout() {
 
       <Form onSubmit={handleSubmit}>
 
-      <Textarea
-          label="Comentário 2"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value)
-          }}
-          placeholder="Digite seu email"
-          errorMessage={errors.email}
-         
-        />
 
       <Textarea
           label="Comentário"
@@ -57,16 +48,6 @@ function Checkout() {
           errorMessage={errors.email}
          
         />
-
-        <Input
-          label="Email"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value)
-          }}
-          placeholder="Digite seu email"
-          errorMessage={errors.email}
-        />
         
         <Input
           label="Senha"
@@ -77,6 +58,32 @@ function Checkout() {
           placeholder="Digite sua senha"
           errorMessage={errors.password}
         />
+
+         <Select
+          label="Qual sua cor favorita ?"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          description="Qual é sua cor favorita ? "
+          options={
+            [
+              {
+                label: 'Vermelho',
+                value: 'red'
+              },
+              {
+                label: 'azul',
+                value: 'blue'
+              },
+              {
+                label: 'Branco',
+                value: 'white'
+              }
+            ]
+          }
+         />
+
+        {color}
+        
 
         <button type="submit">Salvar</button>
       </Form>
