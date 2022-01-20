@@ -4,6 +4,8 @@ import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
 import InputDate from '../../components/InputDate';
+import Checkbox from '../../components/Checkbox';
+import Radio from '../../components/Radio';
 
 import Container from '../../components/Container';
 
@@ -17,6 +19,8 @@ function Checkout() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [aceitaTermodeUso, setAceitaTermodeUso] = useState(false)
+  const [favoriteFood, setFavoriteFood] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -89,6 +93,19 @@ function Checkout() {
               }
             ]
           }
+        />
+
+        <Checkbox
+          checked={aceitaTermodeUso}
+          onChange={(event) => setAceitaTermodeUso(event.target.checked)}
+          label="Aceita o termo de uso"
+          value={aceitaTermodeUso}
+        />
+
+        <Radio
+          name="foodRadio"
+          onChange={(event) => setFavoriteFood(event.target.value)}
+          options={['Sorvete', 'pizza', 'carne']}
         />
 
         <button type="submit">Salvar</button>
