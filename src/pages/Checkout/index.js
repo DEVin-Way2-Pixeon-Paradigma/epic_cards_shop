@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { mask } from 'remask'
+
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
@@ -21,6 +23,7 @@ function Checkout() {
   const [errors, setErrors] = useState({});
   const [aceitaTermodeUso, setAceitaTermodeUso] = useState(false)
   const [favoriteFood, setFavoriteFood] = useState('')
+  const [cpf, setCpf] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -107,6 +110,17 @@ function Checkout() {
           onChange={(event) => setFavoriteFood(event.target.value)}
           options={['Sorvete', 'pizza', 'carne']}
         />
+
+
+        <input
+          
+          value={cpf}
+          onChange={(event) => {
+            console.log(event.target.value)
+            const valueFormatted = mask(event.target.value, ['999.999.999-99', '99.999.999/9999-99']);
+            console.log(valueFormatted)
+            setCpf(valueFormatted);
+          }} />
 
         <button type="submit">Salvar</button>
       </Form>
