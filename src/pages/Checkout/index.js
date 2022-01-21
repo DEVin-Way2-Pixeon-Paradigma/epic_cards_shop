@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 
 import Input from '../../components/Input';
@@ -7,7 +7,7 @@ import Select from '../../components/Select';
 import InputDate from '../../components/InputDate';
 import Checkbox from '../../components/Checkbox';
 import Radio from '../../components/Radio';
-
+import {toast} from 'react-toastify';
 import Container from '../../components/Container';
 
 import { Form } from './styles';
@@ -21,18 +21,51 @@ function Checkout() {
   const [month, setMonth] = useState('')
   const [year, setYear] = useState('')
 
-  function handleSubmit(event) {
+
+  const [list, setList] = useState([])
+
+  useEffect(() => {
+    async function handleGetPedidos() {
+      const response = await fetch('http://localhost:3333/pedidos')
+      const data = await response.json()
+      setList(data)
+    }
+    handleGetPedidos();
+  }, [])
+
+  async function handleSubmit(event) {
     event.preventDefault();
 
-
-    // Yup
-
+    // GET 
+    try {
+      await fetch('http://localhost:3335/pedidos',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            name: name,
+            card_number: cardNumber,
+            cvv: cvv,
+            month: month,
+            year: year
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        },
+      )
+      toast.success('Cadastrado com sucesso')
+    } catch (error) {
+      toast.error('Deu ruim')
+    }
+    // POST - CRIAR
   }
 
 
 
   return (
     <Container>
+
+
+      {list.map(item => <p>{item.name}</p>)}
+
 
       <Form onSubmit={handleSubmit}>
 
@@ -41,7 +74,6 @@ function Checkout() {
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
-
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Input
@@ -58,7 +90,6 @@ function Checkout() {
             flexBasis="45%"
           />
 
-
         </div>
 
         <InputDate
@@ -70,18 +101,15 @@ function Checkout() {
         />
 
         <InputDate
-          label=""
+          label="Ano"
           selected={year}
           onChange={(year) => setYear(year)}
           showYearPicker
           dateFormat="yyyy"
         />
 
-
-
         <button type="submit">Salvar</button>
       </Form>
-
 
     </Container>
   );

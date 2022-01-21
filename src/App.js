@@ -8,11 +8,13 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Payment from './pages/Payment';
 import Menu from './components/Menu';
+import { ToastContainer } from 'react-toastify';
 
 import { CartProvider } from './contexts/Cart'
 import { FavoritesProvider } from './contexts/Favorites';
 
 import "react-datepicker/dist/react-datepicker.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Example from './pages/ExampleWithClass';
 
 // http://locahost:3000/cards/dinosauro
@@ -36,6 +38,7 @@ function App() {
           </Routes>
         </FavoritesProvider>
       </CartProvider>
+      <ToastContainer />
     </>
   )
 }

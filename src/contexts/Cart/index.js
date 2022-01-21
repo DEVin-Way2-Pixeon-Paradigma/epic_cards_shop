@@ -10,6 +10,7 @@
 */
 
 import { createContext, useEffect, useState } from "react"; // 1 
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from 'uuid';
 
 export const CartContext = createContext([]); // 2
@@ -38,6 +39,7 @@ export function CartProvider({ children }) {
     }
 
     setCart([...cart, newCard])
+    toast.success('adicionado ao carrinho')
     localStorage.setItem("cart", JSON.stringify([...cart, card]));
     alert('Adicionado no carrinho')
   }
