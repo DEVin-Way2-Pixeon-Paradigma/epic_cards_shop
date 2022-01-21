@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
-import { mask } from 'remask'
 
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
@@ -12,6 +11,7 @@ import Radio from '../../components/Radio';
 import Container from '../../components/Container';
 
 import { Form } from './styles';
+import { formattedValue } from '../../utils/formattedValue';
 
 function Checkout() {
 
@@ -43,6 +43,10 @@ function Checkout() {
     setErrors(currentErrors);
   }
 
+  const handleChangeDate = useCallback((date) => {
+    setStartDate(date)
+  }, [])
+
   return (
     <Container>
 
@@ -51,7 +55,7 @@ function Checkout() {
         <InputDate
           label="Qual o seu aniversário ?"
           selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          onChange={handleChangeDate}
         />
 
         <Textarea
@@ -111,16 +115,14 @@ function Checkout() {
           options={['Sorvete', 'pizza', 'carne']}
         />
 
-
-        <input
-          
+        <Input
           value={cpf}
           onChange={(event) => {
-            console.log(event.target.value)
-            const valueFormatted = mask(event.target.value, ['999.999.999-99', '99.999.999/9999-99']);
-            console.log(valueFormatted)
-            setCpf(valueFormatted);
-          }} />
+            const valorFormatado = formattedValue(event.target.value, 'phone')
+            setCpf(valorFormatado)
+          }
+          }
+        />
 
         <button type="submit">Salvar</button>
       </Form>

@@ -13,6 +13,7 @@ import { CartProvider } from './contexts/Cart'
 import { FavoritesProvider } from './contexts/Favorites';
 
 import "react-datepicker/dist/react-datepicker.css";
+import Example from './pages/ExampleWithClass';
 
 // http://locahost:3000/cards/dinosauro
 // http://locahost:3000/cards/fada
@@ -31,6 +32,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/example" element={<Example />} />
           </Routes>
         </FavoritesProvider>
       </CartProvider>

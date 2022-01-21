@@ -9,6 +9,8 @@ import {
    } from './styles';
 
 function InputDate({ label, errorMessage, ...otherProps }) {
+
+  console.log('Renderizei novamente - InputDate')
   return (
     <ContainerInput>
      <DescriptionInput>{label}</DescriptionInput>
