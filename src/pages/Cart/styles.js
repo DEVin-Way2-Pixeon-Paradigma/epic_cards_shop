@@ -31,3 +31,13 @@ export const RowItem = styled.td`
 export const CartPhoto = styled.img`
   height: 100px;
 `;
+
+export const Button = styled.button`
+  border: 0;
+  background: #EC6D08;
+  width: 150px;
+  color: #FFF;
+  font-weight: bold;
+  float: right;
+  margin: 10px 0;
+`;

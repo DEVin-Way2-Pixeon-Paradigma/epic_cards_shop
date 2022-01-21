@@ -1,16 +1,25 @@
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/Cart';
 import { MdDelete } from "react-icons/md";
-import { Table, THeader, TBody, CartPhoto, Row, RowItem } from './styles';
+import { Table, THeader, TBody, CartPhoto, Row, RowItem, Button } from './styles';
 
 import Container from '../../components/Container';
 
+import {useNavigate} from 'react-router-dom'
+
 function Cart() {
+
+  const history = useNavigate()
 
   const { cart, removeItem } = useContext(CartContext)
 
+  function handleRedirect() {
+    history('/checkout')
+  }
+
   return (
     <Container>
+     <Button onClick={handleRedirect}>Finalizar compra</Button>
     <Table>
       <THeader>
         <th>#</th>

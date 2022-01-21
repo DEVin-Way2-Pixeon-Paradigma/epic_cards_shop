@@ -7,9 +7,9 @@ import {
    ErrorMessage
    } from './styles';
 
-function Input({ label, errorMessage, ...otherProps }) {
+function Input({ label, errorMessage, flexBasis, ...otherProps }) {
   return (
-    <ContainerInput>
+    <ContainerInput flexBasis={flexBasis}>
      <DescriptionInput>{label}</DescriptionInput>
       <InputText
         {...otherProps}

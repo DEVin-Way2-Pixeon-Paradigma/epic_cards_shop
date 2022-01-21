@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ContainerInput = styled.div`
   display: flex;
   flex-direction: column;
+  flex-basis: ${props => props.flexBasis};
 `;
 
 export const DescriptionInput = styled.label`
